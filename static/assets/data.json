@@ -1,0 +1,74 @@
+[
+	{
+		"name": "Joking Jacks",
+		"buyInMin": 20,
+		"buyInMax": 100,
+		"playersJoined": 6,
+		"playersLimit": 6,
+		"stakesMin": 10,
+		"stakesMax": 20
+	},
+	{
+		"name": "Ace of Shades",
+		"buyInMin": 50,
+		"buyInMax": 300,
+		"playersJoined": 6,
+		"playersLimit": 8,
+		"stakesMin": 50,
+		"stakesMax": 100
+	},
+	{
+		"name": "Fun Charon",
+		"buyInMin": 10000,
+		"buyInMax": 200000,
+		"playersJoined": 1,
+		"playersLimit": 7,
+		"stakesMin": 500,
+		"stakesMax": 1000
+	},
+	{
+		"name": "High Roller",
+		"buyInMin": 20,
+		"buyInMax": 100,
+		"playersJoined": 6,
+		"playersLimit": 5,
+		"stakesMin": 10,
+		"stakesMax": 20
+	},
+	{
+		"name": "Lethal Kings",
+		"buyInMin": 50,
+		"buyInMax": 300,
+		"playersJoined": 6,
+		"playersLimit": 6,
+		"stakesMin": 50,
+		"stakesMax": 100
+	},
+	{
+		"name": "Sizzling Sixes",
+		"buyInMin": 10000,
+		"buyInMax": 200000,
+		"playersJoined": 6,
+		"playersLimit": 8,
+		"stakesMin": 500,
+		"stakesMax": 1000
+	},
+	{
+		"name": "Coyboys",
+		"buyInMin": 20,
+		"buyInMax": 100,
+		"playersJoined": 1,
+		"playersLimit": 7,
+		"stakesMin": 50,
+		"stakesMax": 100
+	},
+	{
+		"name": "Avengers",
+		"buyInMin": 50,
+		"buyInMax": 300,
+		"playersJoined": 2,
+		"playersLimit": 5,
+		"stakesMin": 50,
+		"stakesMax": 100
+	}
+]
