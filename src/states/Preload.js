@@ -15,7 +15,7 @@ class Preload extends Phaser.State {
 	}
 
 	create() {
-		this.state.start('LobbyTable');
+		this.state.start('Lobby');
 	}
 
 }
