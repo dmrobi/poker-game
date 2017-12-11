@@ -4,7 +4,7 @@ import Lobby from 'states/Lobby';
 
 class Game extends Phaser.Game {
 	constructor(){
-		super(window.innerWidth, window.innerHeight, Phaser.AUTO, 'game', null);
+		super("100%", window.innerHeight, Phaser.AUTO, 'game', null, true, true);
 		this.state.add('Boot', Boot, false);
 		this.state.add('Preload', Preload, false);
         this.state.add('Lobby', Lobby, false);

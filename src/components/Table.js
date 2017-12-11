@@ -13,7 +13,7 @@ export default class Table extends Phaser.Plugin {
 		this.config = {
 			width: this.game.width,
 			font: 'custom-font',
-			fontSize: 12,
+			fontSize: 22,
 			colWidth: [0, 0, 0],
 			rowHeight: 0,
 			dataKey: [],
@@ -23,7 +23,9 @@ export default class Table extends Phaser.Plugin {
 			paddingTop: 0,
 			paddingRight: 0,
 			paddingBottom: 0,
-			paddingLeft: 0
+			paddingLeft: 0,
+			top: 0,
+			left: 0
 		};
 
 		//Setup table property
@@ -50,6 +52,9 @@ export default class Table extends Phaser.Plugin {
 			this.table.add(row);
 		}
 
+		this.table.x = this.config.left;
+		this.table.y = this.config.top;
+
 		//Return all the reows after creation
 		return this.rows = this.table.children;
 	}
@@ -69,6 +74,9 @@ export default class Table extends Phaser.Plugin {
 		
 		row.x = positionX;
 		row.y = positoinY;
+
+		//Asign ID into row
+		row.id = data.id;
 
 		return row;
 	}
@@ -97,7 +105,7 @@ export default class Table extends Phaser.Plugin {
 				let playersLimit = Number(players[1]);
 				let playerStatusRad = Math.ceil((playersJoined/playersLimit) * 360);
 
-				let circle = this.config.pieGraphClass.circle(playerStatusRad, positionX + 40, 20, 60);
+				let circle = this.config.pieGraphClass.circle(playerStatusRad, positionX + 16, 9, 25);
 				col.add(circle);
 			}
 
@@ -114,14 +122,25 @@ export default class Table extends Phaser.Plugin {
 
 		//Check for small text
 		if(this.config.smallText){
-			let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 38);
+			let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 14);
 			buyIn.x = this.config.paddingLeft;
-			buyIn.y = 60;
+			buyIn.y = 25;
 			col.add(buyIn);
 		}
 
 		row.add(col);
 	}
+
+
+	addNewRow(){
+		let row = this.game.add.group();
+		let col = this.game.add.group();
+		let cells = {};
+		let tableWidth = this.game.width - (this.config.paddingLeft + this.config.paddingRight);
+		let totalWidthOfColumns = 0;
+
+	}
+
 
 	/**
     * Insert new row into table after crating base table or initialize.
@@ -132,7 +151,7 @@ export default class Table extends Phaser.Plugin {
     * [columnWidth= []] and [gameObject= []] array should be in same length, because column is generating as per length of clumnWidth
     * and content will inserted to the column with similar order.
     */
-	addNewRow(columnWidth, gameObject){
+	addCustomRow(columnWidth, gameObject){
 		// console.log(typeof(gameObject[0]));
 		// return;
 		//Check column is passed or not.

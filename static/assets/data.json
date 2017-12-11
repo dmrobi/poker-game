@@ -1,47 +1,55 @@
 [
 	{
+		"id": "board-1",
 		"name": "Joking Jacks",
 		"buyIn": "200/100",
 		"players": "6/6",
 		"stakes": "10/20"
 	},
 	{
+		"id": "board-2",
 		"name": "Ace of Shades",
 		"buyIn": "50/300",
 		"players": "6/8",
 		"stakes": "50/100"
 	},
 	{
+		"id": "board-3",
 		"name": "Fun Charon",
 		"buyIn": "10,000/200,000",
 		"players": "1/7",
 		"stakes": "500/1000"
 	},
 	{
+		"id": "board-4",
 		"name": "High Roller",
 		"buyIn": "20/100",
 		"players": "2/5",
 		"stakes": "10/20"
 	},
 	{
+		"id": "board-5",
 		"name": "Lethal Kings",
 		"buyIn": "50/300",
 		"players": "6/6",
 		"stakes": "50/100"
 	},
 	{
+		"id": "board-6",
 		"name": "Sizzling Sixes",
 		"buyIn": "10,000/200,00",
 		"players": "6/8",
 		"stakes": "500/1000"
 	},
 	{
+		"id": "board-7",
 		"name": "Coyboys",
 		"buyIn": "20/100",
 		"players": "1/7",
 		"stakes": "10/20"
 	},
 	{
+		"id": "board-8",
 		"name": "Avengers",
 		"buyIn": "50/300",
 		"players": "2/5",
