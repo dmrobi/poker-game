@@ -27,8 +27,8 @@ class Lobby extends Phaser.State {
 		this.lobbyTable = new Table(this.game);
 		this.lobbyTable.configure({
 			width: this.game.width,
-			font: 'custom-font',
-			fontSize: 22,
+			font: 'Roboto',
+			fontSize: 20,
 			colWidth: [50, 25, 25],
 			rowHeight: 60,
 			dataKey: ['name', 'players', 'stakes'],

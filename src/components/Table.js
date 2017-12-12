@@ -12,7 +12,7 @@ export default class Table extends Phaser.Plugin {
 		//Configure Table
 		this.config = {
 			width: this.game.width,
-			font: 'custom-font',
+			font: 'Arial',
 			fontSize: 22,
 			colWidth: [0, 0, 0],
 			rowHeight: 0,
@@ -103,13 +103,17 @@ export default class Table extends Phaser.Plugin {
 				let players = data[this.config.dataKey[id]].split("/");
 				let playersJoined = Number(players[0]);
 				let playersLimit = Number(players[1]);
-				let playerStatusRad = Math.ceil((playersJoined/playersLimit) * 360);
 
-				let circle = this.config.pieGraphClass.circle(playerStatusRad, positionX + 16, 9, 25);
+				let playerStatusRad = Math.floor((playersJoined/playersLimit) * 360);
+
+				let circle = this.config.pieGraphClass.circle(playerStatusRad, positionX + 16, 11, 25);
 				col.add(circle);
 			}
 
-			cells[id] = this.game.add.bitmapText(0, 0, this.config.font, data[this.config.dataKey[id]], this.config.fontSize);
+			//cells[id] = this.game.add.bitmapText(0, 0, this.config.font, data[this.config.dataKey[id]], this.config.fontSize);
+			cells[id] = this.game.add.text(0, 0, data[this.config.dataKey[id]]);
+			cells[id].font = this.config.font;
+			cells[id].fontSize = this.config.fontSize;
 			cells[id].maxWidth = (tableWidth * this.config.colWidth[id]) / 100; //Defining column width in percentage.
 
 			//Set column position and anchor point for first and rest of the game objects in percentage.
@@ -122,7 +126,11 @@ export default class Table extends Phaser.Plugin {
 
 		//Check for small text
 		if(this.config.smallText){
-			let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 14);
+			//let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 14);
+			let buyIn =  this.game.add.text(0, 0, "Buy-In: " + data.buyIn);
+			buyIn.font = this.config.font;
+			buyIn.fontSize = 14;
+			
 			buyIn.x = this.config.paddingLeft;
 			buyIn.y = 25;
 			col.add(buyIn);
