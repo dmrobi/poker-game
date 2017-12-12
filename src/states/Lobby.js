@@ -1,5 +1,6 @@
 import Table from 'components/Table'; //Import table component
 import PieGraph from 'components/PieGraph';
+import FilterTable from 'components/FilterTable';
 
 class Lobby extends Phaser.State {
 	
@@ -7,6 +8,8 @@ class Lobby extends Phaser.State {
 		console.log("State - Lobby");
 
 		this.PieGraph = new PieGraph(this.game);
+		this.lobbyTable = new Table(this.game);
+		this.filter = new FilterTable(this.game, this.lobbyTable);
 
 		//Load the json data into the game
 		this.tablesData = this.cache.getJSON('tablesData');
@@ -23,8 +26,7 @@ class Lobby extends Phaser.State {
 			deltaWheel: 40
 		});
 
-		//Create and Configure Table Comonent
-		this.lobbyTable = new Table(this.game);
+		//Configure Table Comonent
 		this.lobbyTable.configure({
 			width: this.game.width,
 			font: 'Roboto',
@@ -44,6 +46,15 @@ class Lobby extends Phaser.State {
 
 		//Create Table with Json Data.
 		this.lobbyTable.create(this.tablesData);
+
+		//Filter all the rows
+		this.filterData = {
+			buyIn: ["200/100", "50/300"],
+			players: ["2/5", "6/6"],
+			stakes: ["10/20"]
+		}
+
+		this.filter.show(this.filterData);
 
 		/* Add new seperate row in the same table with different data and columns structure. */
 		

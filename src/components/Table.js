@@ -76,7 +76,7 @@ export default class Table extends Phaser.Plugin {
 		row.y = positoinY;
 
 		//Asign ID into row
-		row.id = data.id;
+		row.data = data;
 
 		return row;
 	}
