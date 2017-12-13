@@ -15,6 +15,7 @@ export default class FilterTable extends Phaser.Plugin {
 
 	/**
 	* Filter all the rows as per filter keys and data
+	* @param {Object}	[filterData = {}] - A data object to pass all the filter options in the function.
 	*/
 	show(filterData){
 		for(let i = 0; i < this.rows.length; i++){
@@ -31,22 +32,22 @@ export default class FilterTable extends Phaser.Plugin {
 		}
 
 		//Update position to fill the empty space after hiding some rows.
-		this.updatePosition();
+		this.target.updatePosition();
 	}
 
 	/**
 	* Update all the rows position after taking any action like hiding rows and deleting any of them.
 	*/
-	updatePosition(){
-		let activeRowCount = 0;
-		let tableHeight = 0;
-		for(let i = 0; i < this.table.length; i++){
-			if(this.rows[i].visible){
-				activeRowCount += 1;
-				this.rows[i].y = (this.target.config.rowHeight * activeRowCount) - this.target.config.rowHeight;
-			}
-		}
-	}
+	// updatePosition(){
+	// 	let activeRowCount = 0;
+	// 	let tableHeight = 0;
+	// 	for(let i = 0; i < this.table.length; i++){
+	// 		if(this.rows[i].visible){
+	// 			activeRowCount += 1;
+	// 			this.rows[i].y = (this.target.config.rowHeight * activeRowCount) - this.target.config.rowHeight;
+	// 		}
+	// 	}
+	// }
 
 	/**
     * Get the length of an object

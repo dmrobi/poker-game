@@ -46,10 +46,11 @@ export default class Table extends Phaser.Plugin {
     */
 	create(data, rowHeight = this.config.rowHeight) {
 		for(let i in data){
-			let row = this.row(0, this.config.paddingTop + (rowHeight * i), data[i]);
-			this.height += rowHeight;
+			//let row = this.row(0, this.config.paddingTop + (rowHeight * i), data[i]);
+			let row = this.row(data[i]);
+			//this.height += rowHeight;
 
-			this.table.add(row);
+			//this.table.add(row);
 		}
 
 		this.table.x = this.config.left;
@@ -67,15 +68,18 @@ export default class Table extends Phaser.Plugin {
     * @param {number}	[positiony= 400]	- Set y position of the row.
     * @param {object}	[data= object]		- Json data object to be passed in this parameter.
     */
-	row(positionX, positoinY, data) {
+	row(data) {
 		let row = this.game.add.group();
 		
 		this.column(row, data); //Call column function to create columns with the json data object.
-		
-		row.x = positionX;
-		row.y = positoinY;
+		this.table.add(row);
+		this.height = (this.table.children.length * this.config.rowHeight) - this.config.rowHeight;
 
-		//Asign ID into row
+		//this.updatePosition();
+		row.x = this.config.paddingLeft;
+		row.y = ((this.config.rowHeight + this.config.paddingTop) * this.table.children.length) - this.config.rowHeight;
+		
+		//Asign data into row
 		row.data = data;
 
 		return row;
@@ -96,8 +100,6 @@ export default class Table extends Phaser.Plugin {
 		
 		//Loop through all the item of colWidth mentioned in the configure.
 		for(let id = 0; id < this.config.colWidth.length; id++){
-			let positionX = Math.floor(totalWidthOfColumns + this.config.paddingLeft);
-
 			//Add Pie cricle to the column.
 			if(this.config.pieCircle && this.config.pieGraphClass && this.config.dataKey[id] === this.config.pieCircle){
 				let players = data[this.config.dataKey[id]].split("/");
@@ -106,7 +108,7 @@ export default class Table extends Phaser.Plugin {
 
 				let playerStatusRad = Math.floor((playersJoined/playersLimit) * 360);
 
-				let circle = this.config.pieGraphClass.circle(playerStatusRad, positionX + 16, 11, 25);
+				let circle = this.config.pieGraphClass.circle(playerStatusRad, totalWidthOfColumns + 16, 11, 25);
 				col.add(circle);
 			}
 
@@ -117,7 +119,7 @@ export default class Table extends Phaser.Plugin {
 			cells[id].maxWidth = (tableWidth * this.config.colWidth[id]) / 100; //Defining column width in percentage.
 
 			//Set column position and anchor point for first and rest of the game objects in percentage.
-			cells[id].x = positionX;
+			cells[id].x = totalWidthOfColumns;
 			col.add(cells[id]);
 
 			//Update total width of collumn
@@ -131,22 +133,11 @@ export default class Table extends Phaser.Plugin {
 			buyIn.font = this.config.font;
 			buyIn.fontSize = 14;
 			
-			buyIn.x = this.config.paddingLeft;
 			buyIn.y = 25;
 			col.add(buyIn);
 		}
 
 		row.add(col);
-	}
-
-
-	addNewRow(){
-		let row = this.game.add.group();
-		let col = this.game.add.group();
-		let cells = {};
-		let tableWidth = this.game.width - (this.config.paddingLeft + this.config.paddingRight);
-		let totalWidthOfColumns = 0;
-
 	}
 
 
@@ -227,7 +218,6 @@ export default class Table extends Phaser.Plugin {
     * @param {number}	[options.paddingLeft=50]		- Leave empty space Left of the table before start drawing.
     */
     configure (options) {
-
         if (options) {
             for (let property in options) {
                 if (this.config.hasOwnProperty(property)) {
@@ -235,8 +225,24 @@ export default class Table extends Phaser.Plugin {
                 }
             }
         }
+    }
 
-    };
+
+    /**
+	* Update all the rows position after taking any action like hiding rows and deleting any of them.
+	*/
+	updatePosition(){
+		let activeRowCount = 0;
+		let tableHeight = 0;
+		for(let i = 0; i < this.table.length; i++){
+			if(this.table.children[i].visible){
+				activeRowCount += 1;
+				this.table.children[i].y = (this.config.rowHeight * activeRowCount) - this.config.rowHeight;
+			}
+		}
+
+		this.height = (activeRowCount * this.config.rowHeight) - this.config.rowHeight;
+	}
 
     /**
     * Get the length of an object

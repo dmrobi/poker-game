@@ -47,9 +47,13 @@ class Lobby extends Phaser.State {
 		//Create Table with Json Data.
 		this.lobbyTable.create(this.tablesData);
 
+		this.lobbyTable.row({id:'board-9', name:'test1', buyIn: "50/300", players:'3/5', stakes:'10/20'});
+		this.lobbyTable.row({id:'board-10', name:'test2', buyIn: "50/300", players:'1/5', stakes:'10/20'});
+		this.lobbyTable.row({id:'board-11', name:'test3', buyIn: "50/300", players:'4/5', stakes:'10/20'});
+
 		//Filter all the rows
 		this.filterData = {
-			buyIn: ["200/100", "50/300"],
+			buyIn: ["200/100"],
 			players: ["2/5", "6/6"],
 			stakes: ["10/20"]
 		}
