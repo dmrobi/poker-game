@@ -70,17 +70,16 @@ export default class Table extends Phaser.Plugin {
     */
 	row(data) {
 		let row = this.game.add.group();
+
+		//Asign data into row
+		row.data = data;
 		
-		this.column(row, data); //Call column function to create columns with the json data object.
+		this.column(row); //Call column function to create columns with the json data object.
 		this.table.add(row);
 		this.height = (this.table.children.length * this.config.rowHeight) - this.config.rowHeight;
 
-		//this.updatePosition();
 		row.x = this.config.paddingLeft;
 		row.y = ((this.config.rowHeight + this.config.paddingTop) * this.table.children.length) - this.config.rowHeight;
-		
-		//Asign data into row
-		row.data = data;
 
 		return row;
 	}
@@ -91,7 +90,7 @@ export default class Table extends Phaser.Plugin {
     * @param {group}	[row= group]	- Empty phaser group to hold columns.
     * @param {object}	[data= object]	- Json data object to be passed in this parameter.
     */
-	column(row, data) {
+	column(row) {
 		//Initialize some variable and group.
 		let col = this.game.add.group();
 		let cells = {};
@@ -102,7 +101,7 @@ export default class Table extends Phaser.Plugin {
 		for(let id = 0; id < this.config.colWidth.length; id++){
 			//Add Pie cricle to the column.
 			if(this.config.pieCircle && this.config.pieGraphClass && this.config.dataKey[id] === this.config.pieCircle){
-				let players = data[this.config.dataKey[id]].split("/");
+				let players = row.data[this.config.dataKey[id]].split("/");
 				let playersJoined = Number(players[0]);
 				let playersLimit = Number(players[1]);
 
@@ -113,7 +112,7 @@ export default class Table extends Phaser.Plugin {
 			}
 
 			//cells[id] = this.game.add.bitmapText(0, 0, this.config.font, data[this.config.dataKey[id]], this.config.fontSize);
-			cells[id] = this.game.add.text(0, 0, data[this.config.dataKey[id]]);
+			cells[id] = this.game.add.text(0, 0, row.data[this.config.dataKey[id]]);
 			cells[id].font = this.config.font;
 			cells[id].fontSize = this.config.fontSize;
 			cells[id].maxWidth = (tableWidth * this.config.colWidth[id]) / 100; //Defining column width in percentage.
@@ -129,7 +128,7 @@ export default class Table extends Phaser.Plugin {
 		//Check for small text
 		if(this.config.smallText){
 			//let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 14);
-			let buyIn =  this.game.add.text(0, 0, "Buy-In: " + data.buyIn);
+			let buyIn =  this.game.add.text(0, 0, "Buy-In: " + row.data.buyIn);
 			buyIn.font = this.config.font;
 			buyIn.fontSize = 14;
 			
@@ -227,6 +226,14 @@ export default class Table extends Phaser.Plugin {
         }
     }
 
+    getRowById(id){
+    	console.log(this.table.children.length);
+    	for(let i = 0; i < this.table.children.length; i++){
+    		if(this.table.children[i].data.id == id){
+    			return this.table.children[i];
+    		}
+    	}
+    }
 
     /**
 	* Update all the rows position after taking any action like hiding rows and deleting any of them.

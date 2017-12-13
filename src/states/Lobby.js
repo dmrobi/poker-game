@@ -47,9 +47,12 @@ class Lobby extends Phaser.State {
 		//Create Table with Json Data.
 		this.lobbyTable.create(this.tablesData);
 
-		this.lobbyTable.row({id:'board-9', name:'test1', buyIn: "50/300", players:'3/5', stakes:'10/20'});
-		this.lobbyTable.row({id:'board-10', name:'test2', buyIn: "50/300", players:'1/5', stakes:'10/20'});
-		this.lobbyTable.row({id:'board-11', name:'test3', buyIn: "50/300", players:'4/5', stakes:'10/20'});
+		this.lobbyTable.row({id:9, name:'test1', buyIn: "50/300", players:'3/5', stakes:'10/20'});
+		this.lobbyTable.row({id:10, name:'test2', buyIn: "50/300", players:'1/5', stakes:'10/20'});
+		this.lobbyTable.row({id:11, name:'test3', buyIn: "50/300", players:'4/5', stakes:'10/20'});
+
+		let row = this.lobbyTable.getRowById(10);
+		console.log(row.data);
 
 		//Filter all the rows
 		this.filterData = {
@@ -58,7 +61,7 @@ class Lobby extends Phaser.State {
 			stakes: ["10/20"]
 		}
 
-		this.filter.show(this.filterData);
+		//this.filter.show(this.filterData);
 
 		/* Add new seperate row in the same table with different data and columns structure. */
 		
@@ -99,7 +102,6 @@ class Lobby extends Phaser.State {
 		this.world.resize(window.innerWidth, this.lobbyTable.height + this.header.height + this.footer.height + 100);
 
 	}
-
 }
 
 export default Lobby;

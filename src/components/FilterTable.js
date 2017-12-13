@@ -36,20 +36,6 @@ export default class FilterTable extends Phaser.Plugin {
 	}
 
 	/**
-	* Update all the rows position after taking any action like hiding rows and deleting any of them.
-	*/
-	// updatePosition(){
-	// 	let activeRowCount = 0;
-	// 	let tableHeight = 0;
-	// 	for(let i = 0; i < this.table.length; i++){
-	// 		if(this.rows[i].visible){
-	// 			activeRowCount += 1;
-	// 			this.rows[i].y = (this.target.config.rowHeight * activeRowCount) - this.target.config.rowHeight;
-	// 		}
-	// 	}
-	// }
-
-	/**
     * Get the length of an object
     *
     * @method this.ObjLength()
