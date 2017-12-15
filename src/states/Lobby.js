@@ -48,7 +48,55 @@ class Lobby extends Phaser.State {
 		//Create Table with Tournaments Data.
 		this.lobbyTable.create(this.tournaments);
 
-		// this.lobbyTable.row({id:9, name:'test1', buyIn: "50/300", players:'3/5', stakes:'10/20'});
+
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 01', 'minBuyIn':100, 'maxBuyIn':500, 'minPlayers':3, 'maxPlayers':9, 'smallBlind':10, 'bigBlind':20});
+			this.item += 1;
+		}, 2000);
+
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 02', 'minBuyIn':1000, 'maxBuyIn':5000, 'minPlayers':1, 'maxPlayers':6, 'smallBlind':50, 'bigBlind':100});
+			this.item += 1;
+		}, 4000);
+
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 03', 'minBuyIn':2000, 'maxBuyIn':20000, 'minPlayers':7, 'maxPlayers':9, 'smallBlind':5, 'bigBlind':10});
+			this.item += 1;
+		}, 6000);
+
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 05', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 8000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 06', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 10000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 07', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 12000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 08', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 14000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 09', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 16000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 10', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 18000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 11', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 20000);
+		setTimeout(()=>{
+			this.lobbyTable.row({'tournamentName':'Test 12', 'minBuyIn':500, 'maxBuyIn':1000, 'minPlayers':2, 'maxPlayers':6, 'smallBlind':2, 'bigBlind':4});
+			this.item += 1;
+		}, 22000);
+		//this.lobbyTable.row({'tournamentName':'Test 01', 'minBuyIn':100, 'maxBuyIn':500, 'minPlayers':3, 'maxPlayers':9, 'smallBlind':5, 'bigBlind':10});
 		// this.lobbyTable.row({id:10, name:'test2', buyIn: "50/300", players:'1/5', stakes:'10/20'});
 		// this.lobbyTable.row({id:11, name:'test3', buyIn: "50/300", players:'4/5', stakes:'10/20'});
 
@@ -57,14 +105,18 @@ class Lobby extends Phaser.State {
 
 		//Filter all the rows
 		this.filterOptions = {
-			minBuyIn: [20, 2000, 50],
-			maxBuyIn: [100, 8000],
-			maxPlayers: [2, 6],
-			smallBlind: [10, 5],
-			bigBlind: [20, 10]
+			minBuyIn: [0, 50, 100],
+			//maxBuyIn: [100, 8000],
+			//maxPlayers: [2, 6],
+			//smallBlind: [10, 5],
+			//bigBlind: [20, 10]
 		}
 
-		this.filter.show(this.filterOptions);
+		//this.filter.show(this.filterOptions);
+
+		setTimeout(()=>{
+			this.filter.show(this.filterOptions);
+		}, 24000);
 
 		/* Add new seperate row in the same table with different data and columns structure. */
 		
@@ -100,10 +152,11 @@ class Lobby extends Phaser.State {
 		//Make some object fixed to camera or non movable
 		this.header.fixedToCamera = true;
 		this.footer.fixedToCamera = true;
+	}
 
+	update(){
 		//Change game size implement scroll effect
 		this.world.resize(window.innerWidth, this.lobbyTable.height + this.header.height + this.footer.height + 100);
-
 	}
 }
 

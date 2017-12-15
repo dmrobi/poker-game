@@ -90,6 +90,7 @@ export default class Table extends Phaser.Plugin {
 		row.x = this.config.paddingLeft;
 		row.y = ((this.config.rowHeight + this.config.paddingTop) * this.table.children.length) - this.config.rowHeight;
 
+		this.updatePosition();
 		return row;
 	}
 
