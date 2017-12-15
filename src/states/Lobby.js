@@ -56,13 +56,15 @@ class Lobby extends Phaser.State {
 		//console.log(row.data);
 
 		//Filter all the rows
-		// this.filterData = {
-		// 	buyIn: ["200/100"],
-		// 	players: ["2/5", "6/6"],
-		// 	stakes: ["10/20"]
-		// }
+		this.filterOptions = {
+			minBuyIn: [20, 2000, 50],
+			maxBuyIn: [100, 8000],
+			maxPlayers: [2, 6],
+			smallBlind: [10, 5],
+			bigBlind: [20, 10]
+		}
 
-		//this.filter.show(this.filterData);
+		this.filter.show(this.filterOptions);
 
 		/* Add new seperate row in the same table with different data and columns structure. */
 		

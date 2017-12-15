@@ -15,16 +15,17 @@ export default class FilterTable extends Phaser.Plugin {
 
 	/**
 	* Filter all the rows as per filter keys and data
-	* @param {Object}	[filterData = {}] - A data object to pass all the filter options in the function.
+	* @param {Object}	[data = {}] - A data object to pass all the filter options in the function.
 	*/
-	show(filterData){
+	show(data){
+
 		for(let i = 0; i < this.rows.length; i++){
 			this.rows[i].visible = false;
 
-			//Hide all the rows except those rows are selected by filterData
-			for(let key in filterData){
-				for(let j = 0; j < filterData[key].length; j++){
-					if(this.rows[i].data[key] == filterData[key][j]){
+			//Hide all the rows except those rows are selected by data
+			for(let key in data){
+				for(let j = 0; j < data[key].length; j++){
+					if(this.rows[i].data[key] == data[key][j]){
 						this.rows[i].visible = true;
 					}
 				}
