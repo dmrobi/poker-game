@@ -13,6 +13,7 @@ class Lobby extends Phaser.State {
 
 		//Load the json data into the game
 		this.tablesData = this.cache.getJSON('tablesData');
+		this.tournaments = this.cache.getJSON('tournaments');
 
 		//Start and Configure kinetic scroll plugin
 		this.game.kineticScrolling.start();
@@ -30,10 +31,10 @@ class Lobby extends Phaser.State {
 		this.lobbyTable.configure({
 			width: this.game.width,
 			font: 'Roboto',
-			fontSize: 20,
-			colWidth: [50, 25, 25],
+			fontSize: 18,
+			colWidth: [60, 20, 20],
 			rowHeight: 60,
-			dataKey: ['name', 'players', 'stakes'],
+			dataKey: ['tournamentName', 'minBuyIn', 'maxBuyIn', 'minPlayers', 'maxPlayers', 'smallBlind', 'bigBlind'],
 			smallText: 'buyIn',
 			pieCircle: 'players',
 			pieGraphClass: this.PieGraph,
@@ -44,22 +45,22 @@ class Lobby extends Phaser.State {
 			top: 170
 		});
 
-		//Create Table with Json Data.
-		this.lobbyTable.create(this.tablesData);
+		//Create Table with Tournaments Data.
+		this.lobbyTable.create(this.tournaments);
 
-		this.lobbyTable.row({id:9, name:'test1', buyIn: "50/300", players:'3/5', stakes:'10/20'});
-		this.lobbyTable.row({id:10, name:'test2', buyIn: "50/300", players:'1/5', stakes:'10/20'});
-		this.lobbyTable.row({id:11, name:'test3', buyIn: "50/300", players:'4/5', stakes:'10/20'});
+		// this.lobbyTable.row({id:9, name:'test1', buyIn: "50/300", players:'3/5', stakes:'10/20'});
+		// this.lobbyTable.row({id:10, name:'test2', buyIn: "50/300", players:'1/5', stakes:'10/20'});
+		// this.lobbyTable.row({id:11, name:'test3', buyIn: "50/300", players:'4/5', stakes:'10/20'});
 
-		let row = this.lobbyTable.getRowById(10);
-		console.log(row.data);
+		//let row = this.lobbyTable.getRowById(10);
+		//console.log(row.data);
 
 		//Filter all the rows
-		this.filterData = {
-			buyIn: ["200/100"],
-			players: ["2/5", "6/6"],
-			stakes: ["10/20"]
-		}
+		// this.filterData = {
+		// 	buyIn: ["200/100"],
+		// 	players: ["2/5", "6/6"],
+		// 	stakes: ["10/20"]
+		// }
 
 		//this.filter.show(this.filterData);
 

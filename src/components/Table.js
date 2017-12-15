@@ -45,12 +45,18 @@ export default class Table extends Phaser.Plugin {
     * @param {number}	[rowHeight= 60]		- Set height for every rows.
     */
 	create(data, rowHeight = this.config.rowHeight) {
-		for(let i in data){
-			//let row = this.row(0, this.config.paddingTop + (rowHeight * i), data[i]);
-			let row = this.row(data[i]);
-			//this.height += rowHeight;
+		//console.log(data.classObj.lobbyDetailsMap);
 
-			//this.table.add(row);
+		let tournaments = data.classObj.lobbyDetailsMap;
+		
+		for(let key in tournaments){
+			if(tournaments[key][0]){
+				//let row = this.row(0, this.config.paddingTop + (rowHeight * i), data[i]);
+				let row = this.row(tournaments[key][0]);
+				//this.height += rowHeight;
+
+				//this.table.add(row);
+			}
 		}
 
 		this.table.x = this.config.left;
@@ -70,9 +76,12 @@ export default class Table extends Phaser.Plugin {
     */
 	row(data) {
 		let row = this.game.add.group();
+		row.data = {};
 
 		//Asign data into row
-		row.data = data;
+		for(let key in this.config.dataKey){
+			row.data[this.config.dataKey[key]] = data[this.config.dataKey[key]];
+		}
 		
 		this.column(row); //Call column function to create columns with the json data object.
 		this.table.add(row);
@@ -97,7 +106,35 @@ export default class Table extends Phaser.Plugin {
 		let tableWidth = this.game.width - (this.config.paddingLeft + this.config.paddingRight);
 		let totalWidthOfColumns = 0;
 		
+		for(let id = 0; id < this.config.colWidth.length; id++){
+			if(id == 0){
+				cells[id] = this.game.add.text(0, 0, row.data.tournamentName)
+			}else if(id == 1){
+				//Add Pie cricle to the column.
+				let playerStatusRad = Math.floor((row.data.minPlayers/row.data.maxPlayers) * 360);
+				let circle = this.config.pieGraphClass.circle(playerStatusRad, totalWidthOfColumns + 12, 11, 25);
+				col.add(circle);
+
+				cells[id] = this.game.add.text(0, 0, row.data.minPlayers + '/' + row.data.maxPlayers)
+				cells[id].addColor("#ffF", 0);
+			}else if(id == 2){
+				cells[id] = this.game.add.text(0, 0, row.data.smallBlind + '/' + row.data.bigBlind)
+			}
+
+			cells[id].font = this.config.font;
+			cells[id].fontSize = this.config.fontSize;
+			cells[id].maxWidth = (tableWidth * this.config.colWidth[id]) / 100; //Defining column width in percentage.
+
+			//Set column position and anchor point for first and rest of the game objects in percentage.
+			cells[id].x = totalWidthOfColumns;
+			col.add(cells[id]);
+			
+			//Update total width of collumn
+			totalWidthOfColumns += cells[id].maxWidth;
+		}
+
 		//Loop through all the item of colWidth mentioned in the configure.
+		/*
 		for(let id = 0; id < this.config.colWidth.length; id++){
 			//Add Pie cricle to the column.
 			if(this.config.pieCircle && this.config.pieGraphClass && this.config.dataKey[id] === this.config.pieCircle){
@@ -116,25 +153,25 @@ export default class Table extends Phaser.Plugin {
 			cells[id].font = this.config.font;
 			cells[id].fontSize = this.config.fontSize;
 			cells[id].maxWidth = (tableWidth * this.config.colWidth[id]) / 100; //Defining column width in percentage.
+			
 
 			//Set column position and anchor point for first and rest of the game objects in percentage.
 			cells[id].x = totalWidthOfColumns;
 			col.add(cells[id]);
-
+			
 			//Update total width of collumn
 			totalWidthOfColumns += cells[id].maxWidth;
-		}
-
-		//Check for small text
-		if(this.config.smallText){
-			//let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 14);
-			let buyIn =  this.game.add.text(0, 0, "Buy-In: " + row.data.buyIn);
-			buyIn.font = this.config.font;
-			buyIn.fontSize = 14;
 			
-			buyIn.y = 25;
-			col.add(buyIn);
 		}
+		*/
+
+		//let buyIn = this.game.add.bitmapText(0, 0, this.config.font, "Buy-In: "+data.buyIn, 14);
+		let buyIn =  this.game.add.text(0, 0, "Buy-In: " + row.data.minBuyIn + '/' + row.data.maxBuyIn);
+		buyIn.font = this.config.font;
+		buyIn.fontSize = 14;
+		
+		buyIn.y = 25;
+		col.add(buyIn);
 
 		row.add(col);
 	}

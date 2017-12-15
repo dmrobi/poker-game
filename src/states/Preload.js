@@ -8,6 +8,7 @@ class Preload extends Phaser.State {
 		this.load.image('footer', 'assets/sprites/footer.jpg');
 
 		//Load json data file
+		this.load.json('tournaments', 'assets/tournaments.json');
 		this.load.json('tablesData', 'assets/data.json');
 
 		//Load Custo fonts

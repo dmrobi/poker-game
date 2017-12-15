@@ -1,0 +1,227 @@
+{  
+   "result":"Success",
+   "classObj":{  
+      "action":"TableResponse",
+      "interrupt":null,
+      "defaultLobbyId":null,
+      "defaultLobbyMenuId":null,
+      "tournaments":null,
+      "gameResponse":false,
+      "tournamentLobbyUsers":null,
+      "lobbyUsers":null,
+      "lobbyDetailsMap":{
+         "311":[
+
+
+         ],
+         "19":[
+            {
+               "playerInGame":false,
+               "cloneTournamentTableId":0,
+               "miniGameName":"Texas Hold'em",
+               "minPlayers":2,
+               "limitCheck":1,
+               "playerHandTimer":30,
+               "minBuyIn":50,
+               "maxBuyIn":200,
+               "bigBlind":4,
+               "smallBlind":2,
+               "coinType":1,
+               "sitOutTime":10,
+               "totalStakeLevels":1,
+               "highLowLevel":1,
+               "tournamentLevelName":"NO LIMIT",
+               "currentPlayerCount":0,
+               "tablePlayers":[
+
+
+               ],
+               "themes":"",
+               "chat":0,
+               "registerTable":0,
+               "tournamentUsers":{
+
+
+               },
+               "averagePot":0,
+               "totalWinAmount":0,
+               "straddle":0,
+               "deepStack":0,
+               "rakeCap":30,
+               "extraTime":15,
+               "rake":4.00,
+               "rake1":3.00,
+               "rakeCap1":40,
+               "antiBankingTime":20,
+               "tournamentStatusInfo":null,
+               "tournamentStartTimeInfo":null,
+               "tournamentGameDesc":null,
+               "tournamentBuyInInfo":null,
+               "buyIn":null,
+               "entryFee":null,
+               "regStartTime":null,
+               "regEndTime":null,
+               "rowNumber":0,
+               "regStartTimeFormated":null,
+               "regEndTimeFormated":null,
+               "tournamentStartTimeFormated":null,
+               "tourStartTimeFormated4List":null,
+               "isRebuy":0,
+               "isAddon":0,
+               "lateRegistrationAllow":null,
+               "runItTwiceTable":1,
+               "serverURL":"devenv.pokerbaazi.com:8080",
+               "serverId":"1",
+               "parentTournamentId":null,
+               "favouriteTable":false,
+               "totalWaitingListPlayers":"0/0",
+               "activeTournament":1,
+               "gameType":1,
+               "gameResponse":false,
+               "totalPlayers":"0/6",
+               "currentTime":null,
+               "lobbyId":1,
+               "lobbyMenuId":1,
+               "isActive":1,
+               "tournamentStatus":1,
+               "waitingListUsers":[  
+
+
+               ],
+               "tournamentTableId":10073,
+               "password":null,
+               "tournamentName":"Sizzling Six",
+               "maxPlayers":6,
+               "waitingListButton":false,
+               "joinWaitListButton":false,
+               "waitListUsersPosition":{  
+
+
+               },
+               "gameId":"Texas Hold'em",
+               "anonymousTable":0,
+               "playersList":[  
+
+
+               ],
+               "playerRefresh":{  
+
+
+               },
+               "anonymousUserMap":{  
+
+
+               },
+               "handsPlayed":0,
+               "tournamentId":10026,
+               "tournamentStartTime":null,
+               "tableName":null
+            }
+         ],
+         "210":[  
+            {  
+               "playerInGame":false,
+               "cloneTournamentTableId":12392,
+               "miniGameName":"Texas Hold'em",
+               "minPlayers":2,
+               "limitCheck":1,
+               "playerHandTimer":20,
+               "minBuyIn":0,
+               "maxBuyIn":0,
+               "bigBlind":0,
+               "smallBlind":0,
+               "coinType":1,
+               "sitOutTime":10,
+               "totalStakeLevels":1,
+               "highLowLevel":0,
+               "tournamentLevelName":"NO LIMIT",
+               "currentPlayerCount":0,
+               "tablePlayers":[  
+
+
+               ],
+               "themes":"",
+               "chat":0,
+               "registerTable":1,
+               "tournamentUsers":{  
+
+
+               },
+               "averagePot":0,
+               "totalWinAmount":250.00,
+               "straddle":0,
+               "deepStack":0,
+               "rakeCap":0,
+               "extraTime":20,
+               "rake":0.00,
+               "rake1":0.00,
+               "rakeCap1":0,
+               "antiBankingTime":30,
+               "tournamentStatusInfo":"Announced",
+               "tournamentStartTimeInfo":null,
+               "tournamentGameDesc":null,
+               "tournamentBuyInInfo":null,
+               "buyIn":150,
+               "entryFee":7.50,
+               "regStartTime":1513002600000,
+               "regEndTime":1513002600000,
+               "rowNumber":0,
+               "regStartTimeFormated":"Dec 11, 2017 20:00 IST",
+               "regEndTimeFormated":"Dec 11, 2017 20:00 IST",
+               "tournamentStartTimeFormated":"Dec 11, 2017 20:00 IST",
+               "tourStartTimeFormated4List":"Dec 11 20:00 IST",
+               "isRebuy":0,
+               "isAddon":0,
+               "lateRegistrationAllow":1,
+               "runItTwiceTable":0,
+               "serverURL":"devenv.pokerbaazi.com:8080",
+               "serverId":"1",
+               "parentTournamentId":0,
+               "favouriteTable":false,
+               "totalWaitingListPlayers":null,
+               "activeTournament":1,
+               "gameType":2,
+               "gameResponse":false,
+               "totalPlayers":"0",
+               "currentTime":1513064314000,
+               "lobbyId":2,
+               "lobbyMenuId":5,
+               "isActive":1,
+               "tournamentStatus":0,
+               "waitingListUsers":[  
+
+
+               ],
+               "tournamentTableId":0,
+               "password":null,
+               "tournamentName":"Recurrence Test01",
+               "maxPlayers":9,
+               "waitingListButton":false,
+               "joinWaitListButton":false,
+               "waitListUsersPosition":{  
+
+
+               },
+               "gameId":"Texas Hold'em",
+               "anonymousTable":0,
+               "playersList":[  
+
+
+               ],
+               "playerRefresh":{  
+
+
+               },
+               "anonymousUserMap":{  
+
+
+               },
+               "handsPlayed":0,
+               "tournamentId":12392,
+               "tournamentStartTime":1513002600000,
+               "tableName":null
+            }
+         ]
+      }
+   }
+}
