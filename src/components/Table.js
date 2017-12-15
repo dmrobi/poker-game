@@ -113,13 +113,15 @@ export default class Table extends Phaser.Plugin {
 			}else if(id == 1){
 				//Add Pie cricle to the column.
 				let playerStatusRad = Math.floor((row.data.minPlayers/row.data.maxPlayers) * 360);
-				let circle = this.config.pieGraphClass.circle(playerStatusRad, totalWidthOfColumns + 12, 11, 25);
+				let circle = this.config.pieGraphClass.circle(playerStatusRad, totalWidthOfColumns + 12, 20, 25);
 				col.add(circle);
 
 				cells[id] = this.game.add.text(0, 0, row.data.minPlayers + '/' + row.data.maxPlayers)
 				cells[id].addColor("#ffF", 0);
+				cells[id].y = 10;
 			}else if(id == 2){
-				cells[id] = this.game.add.text(0, 0, row.data.smallBlind + '/' + row.data.bigBlind)
+				cells[id] = this.game.add.text(0, 0, row.data.smallBlind + '/' + row.data.bigBlind);
+				cells[id].y = 10;
 			}
 
 			cells[id].font = this.config.font;
@@ -170,9 +172,20 @@ export default class Table extends Phaser.Plugin {
 		let buyIn =  this.game.add.text(0, 0, "Buy-In: " + row.data.minBuyIn + '/' + row.data.maxBuyIn);
 		buyIn.font = this.config.font;
 		buyIn.fontSize = 14;
-		
 		buyIn.y = 25;
 		col.add(buyIn);
+
+		//Draw Underline
+		let line = new Phaser.Line(0, 0, this.config.width - (this.config.paddingRight + this.config.paddingLeft), 0);
+		let underline = this.game.add.graphics(0, 0);
+		//var graphics=game.add.graphics(line.start.x,line.start.y);//if you have a static line
+		underline.lineStyle(1, 0xE5E5E5, 1);
+		underline.moveTo(line.start.x, line.start.y);//moving position of graphic if you draw mulitple lines
+		underline.lineTo(line.end.x, line.end.y);
+		underline.endFill();
+		underline.y = this.config.rowHeight - 10;
+		col.add(underline);
+		
 
 		row.add(col);
 	}
