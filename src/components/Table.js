@@ -247,6 +247,23 @@ export default class Table extends Phaser.Plugin {
 		
 	}
 
+	/**
+    * Sort all the rows of table
+    *
+    * @method this.sort()
+    * @param {string}	[string] - Data key as string value to sort all the rows.
+    */
+	sort(sortKey){
+		this.table.children.sort((a, b)=>{
+			console.log(sortKey);
+			if (a.data[sortKey] < b.data[sortKey])
+				return -1;
+			if (a.data[sortKey] > b.data[sortKey])
+				return 1;
+			return 0;
+		});
+		this.updatePosition();
+	}
 
 	/**
     * Change Default Settings of the table
