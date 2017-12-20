@@ -122,6 +122,10 @@ class Lobby extends Phaser.State {
 			this.filter.show(this.filterOptions);
 		}, 60000);
 
+		//Change/Update row data
+		//this.lobbyTable.table.children[0].children[0].children[0]._text = "Test"
+		//console.log(this.lobbyTable.table.children[0].children[0].children[0]._text);
+
 		/* Add new seperate row in the same table with different data and columns structure. */
 		
 		/*
